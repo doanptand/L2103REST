@@ -29,6 +29,16 @@ class StudentController {
         return studentService.getStudentById(id)
     }
 
+    @GetMapping("/name/{name}")
+    fun getStudentByName(@PathVariable name: String): Student {
+        return studentService.getStudentByName(name)
+    }
+
+    @GetMapping("/score/{score}")
+    fun getStudentsByScore(@PathVariable score: Float): List<Student> {
+        return studentService.getStudentHaveScoreGreaterThan(score)
+    }
+
     @PostMapping("/add")
     fun addStudent(@RequestBody student: Student): Student? {
         return studentService.addStudent(student)

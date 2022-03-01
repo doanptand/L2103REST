@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface StudentRepository : CrudRepository<Student, Int> {
+    //    https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
+    fun findByName(name: String): Student
+
+    fun findByScoreIsGreaterThan(score: Float): List<Student>
 }

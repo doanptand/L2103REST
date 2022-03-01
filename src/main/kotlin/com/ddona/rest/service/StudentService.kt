@@ -20,6 +20,14 @@ class StudentService {
         return studentRepository.findByIdOrNull(id)
     }
 
+    fun getStudentByName(name: String): Student {
+        return studentRepository.findByName(name)
+    }
+
+    fun getStudentHaveScoreGreaterThan(score: Float): List<Student> {
+        return studentRepository.findByScoreIsGreaterThan(score)
+    }
+
     fun addStudent(student: Student): Student? {
         if (studentRepository.findByIdOrNull(student.id) == null) {
             return studentRepository.save(student)
