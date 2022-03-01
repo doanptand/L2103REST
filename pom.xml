@@ -53,6 +53,12 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -72,7 +78,13 @@
                     </args>
                     <compilerPlugins>
                         <plugin>spring</plugin>
+                        <plugin>jpa</plugin>
                     </compilerPlugins>
+                    <pluginOptions>
+                        <option>no-arg:annotation=com.my.Annotation</option>
+                        <!-- Call instance initializers in the synthetic constructor -->
+                        <option>no-arg:invokeInitializers=true</option>
+                    </pluginOptions>
                 </configuration>
                 <dependencies>
                     <dependency>
