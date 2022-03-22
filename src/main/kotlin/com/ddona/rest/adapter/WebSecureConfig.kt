@@ -1,5 +1,6 @@
 package com.ddona.rest.adapter
 
+import com.ddona.rest.filter.JWTAuthenticationFilter
 import com.ddona.rest.filter.JWTLoginFilter
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
@@ -40,6 +41,8 @@ class WebSecureConfig : WebSecurityConfigurerAdapter() {
             .addFilterBefore(
                 JWTLoginFilter("/login", authenticationManager()),
                 UsernamePasswordAuthenticationFilter::class.java
+            ).addFilterBefore(
+                JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter::class.java
             )
     }
 }
